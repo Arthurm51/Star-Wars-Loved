@@ -7,6 +7,9 @@ import Home from './pages/Home'
 import Films from './pages/Films'
 import Starships from './pages/Starships'
 import People from './pages/People'
+import Planets from './pages/Planets'
+import Species from './pages/Species'
+import Login from './pages/Login'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 function App() {
@@ -20,6 +23,9 @@ function App() {
           <Route path="/films" component={Films} />
           <Route path="/starships" component={Starships}/>
           <Route path="/people" component={People}/>
+          <Route path="/planets" component={Planets}/>
+          <Route path="/species" component={Species}/>
+          <Route path="/login" component={Login}/>
         </Switch>
       </BrowserRouter>
       <Footer />

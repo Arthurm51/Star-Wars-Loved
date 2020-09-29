@@ -10,6 +10,9 @@ function Header() {
                     <Link to="/films">Films</Link>
                     <Link to="/starships">Starships</Link>
                     <Link to="/people">People</Link>
+                    <Link to="/planets">Planets</Link>
+                    <Link to="/species">Species</Link>
+                    <Link to="/login">Login</Link>
                 </nav>
                 <a href="#navPanel" className="navPanelToggle"><span className="fa fa-bars"></span></a>
             </div>
