@@ -5,12 +5,12 @@ export default function Home() {
 
     return (
         <>
-            <Banner titulo="Lista de Produtos" mensagem="Aula de React" />
+            <Banner titulo="Starships" mensagem="Relembre aqui as melhores naves do universo STAR WARS" />
             <section id="three" className="wrapper special">
                 <div className="inner">
                     <header className="align-center">
-                        <h2>Página De Produtos</h2>
-                        <p>Visualize nossas aplicações </p>
+                        <h2>Aeroporto Espacial</h2>
+                        <p>Confira aqui as mais poderosas naves STAR WARS.</p>
                     </header>
                     <div className="flex flex-2">
                         <article>
@@ -40,6 +40,12 @@ export default function Home() {
                     </div>
                 </div>
             </section>
+
+
+            
         </>
     )
 }
+    
+
+            

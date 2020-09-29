@@ -7,7 +7,9 @@ function Header() {
                 <Link to="/" className="logo">Star Wars Loved </Link>
                 <nav id="nav">
                     <Link to="/">Home</Link>
-                    <Link to="/produtos">Produtos</Link>
+                    <Link to="/films">Films</Link>
+                    <Link to="/starships">Starships</Link>
+                    <Link to="/people">People</Link>
                 </nav>
                 <a href="#navPanel" className="navPanelToggle"><span className="fa fa-bars"></span></a>
             </div>
