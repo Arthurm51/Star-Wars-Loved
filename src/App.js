@@ -2,7 +2,6 @@ import React from 'react';
 import './assets/css/main.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
-
 import Home from './pages/Home'
 import Films from './pages/Films'
 import Starships from './pages/Starships'
@@ -10,13 +9,14 @@ import People from './pages/People'
 import Planets from './pages/Planets'
 import Species from './pages/Species'
 import Login from './pages/Login'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { HashRouter, Switch, Route } from 'react-router-dom'
+
 
 function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Header />
         <Switch>
           <Route path="/" exact={true} component={Home} />
@@ -27,7 +27,7 @@ function App() {
           <Route path="/species" component={Species}/>
           <Route path="/login" component={Login}/>
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
       <Footer />
     </>
   );

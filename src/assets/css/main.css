@@ -3065,3 +3065,68 @@
 		}
 
 	}
+
+
+.login{
+	margin-top: 100px;
+	margin-left: 37.5%;
+	margin-bottom: 50px;
+	background-color: #9a9a9a;
+	align-items: center;
+	
+	width: 25%;
+	height: 500px;
+	padding: 80px;
+	border-radius: 10px;
+	
+}
+
+.login .email{
+	color: black;
+}
+
+.login .email h3 {
+	color: black;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	justify-content: space-evenly;
+	font-family: 'Courier New', Courier, monospace;	
+	font-weight: bold;
+}
+
+.login .email input{
+	color: black;
+	background-color: white;
+	border-radius: 10px;
+	
+}
+
+.login .senha{
+	color: black;
+}
+
+.login .senha h3 {
+	margin-top: 35px;
+	color: black;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	justify-content: space-evenly;
+	font-family: 'Courier New', Courier, monospace;	
+	font-weight: bold;
+}
+
+.login .senha input{
+	color: black;
+	background-color: white;
+	border-radius: 10px;
+	
+}
+
+.login .fazerLogin{
+	margin-top: 50px;
+	display: flex;
+	justify-content: space-around;
+	justify-content: space-evenly;
+}

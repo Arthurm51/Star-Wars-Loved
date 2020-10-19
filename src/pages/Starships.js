@@ -1,51 +1,51 @@
-import React from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import Banner from '../components/Banner'
-import { Link } from 'react-router-dom'
-export default function Home() {
+import axios from 'axios'
+
+
+
+export default function Starships() {
+
+    const [starships, setStarships] = useState([])
+    const [msg, setMsg] = useState("")
+
+    const getStarships = () => {
+        axios.get(`https://swapi.dev/api/starships/`)
+            .then(retorno => {
+                console.log(retorno)
+                setStarships(retorno.data.results)
+                setMsg("")
+            }).catch(() => setMsg("Erro ao buscar dados!"))
+    }
+
+    useLayoutEffect(() => {
+
+        getStarships()
+
+
+    }, [])
 
     return (
         <>
-            <Banner titulo="Starships" mensagem="Relembre aqui as melhores naves do universo STAR WARS" />
-            <section id="three" className="wrapper special">
-                <div className="inner">
-                    <header className="align-center">
-                        <h2>Aeroporto Espacial</h2>
-                        <p>Confira aqui as mais poderosas naves STAR WARS.</p>
-                    </header>
-                    <div className="flex flex-2">
-                        <article>
-                            <div className="image fit">
-                                <img src={require('../images/pic01.jpg')} alt="Pic 01" />
-                            </div>
-                            <header>
-                                <h3>Praesent placerat magna</h3>
-                            </header>
-                            <p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor lorem ipsum.</p>
-                            <footer>
-                                <Link to="/" className="button special">More</Link>
-                            </footer>
-                        </article>
-                        <article>
-                            <div className="image fit">
-                                <img src={require('../images/pic02.jpg')} alt="Pic 02" />
-                            </div>
-                            <header>
-                                <h3>Fusce pellentesque tempus</h3>
-                            </header>
-                            <p>Sed adipiscing ornare risus. Morbi est est, blandit sit amet, sagittis vel, euismod vel, velit. Pellentesque egestas sem. Suspendisse commodo ullamcorper magna non comodo sodales tempus.</p>
-                            <footer>
-                                <Link to="/" className="button special">More</Link>
-                            </footer>
-                        </article>
+        <Banner titulo="Espaço-Naves" mensagem="Confira aqui um resumo de todas as Espaço-Naves do universo STAR WARS" />
+        <section id="three" className="wrapper special">
+            <div className="corpoPagina">
+                {msg}
+                {starships.map((item, chave) =>
+                    <div key={chave}>
+                            
+                <h3>Nome: </h3><h2>{item.name}</h2> <h1>Modelo: </h1><strong>{item.model}</strong><br/> <br/><h1>Fabricante: </h1>{item.manufacturer} <br/><br/> <h1>Custo em créditos: </h1> {item.cost_in_credits}<br/><br/> <h1>Comprimento: </h1> {item.length}<br/><br/> <h1>Velocidade atmosférica máxima: </h1> {item.max_atmosphering_speed} <h1>Equipe técnica: </h1> {item.crew}<br/><br/> <h1>Passageiros: </h1> {item.passengers} <h1>Capacidade de carga: </h1> {item.cargo_capacity}<br/><br/> <h1>Consumiveis: </h1> {item.consumables} <h1>Avaliação hiperdrive: </h1> {item.hyperdrive_rating}<br/><br/> <h1>MGLT: </h1> {item.MGLT} <h1>Classe: </h1> {item.starship_class}<br/><br/> <h1>Criação: </h1> {item.created} <h1>Modificada: </h1> {item.edited}
+                        
+                        <hr />
                     </div>
-                </div>
-            </section>
-
-
-            
+                    )
+                
+                    }
+            </div >
+        </section>
+        
         </>
     )
 }
-    
 
             

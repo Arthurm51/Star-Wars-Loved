@@ -1,46 +1,51 @@
-import React from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import Banner from '../components/Banner'
-import { Link } from 'react-router-dom'
-export default function Home() {
+import axios from 'axios'
+
+
+
+export default function Planets() {
+
+    const [planets, setPlanets] = useState([])
+    const [msg, setMsg] = useState("")
+
+    const getPlanets = () => {
+        axios.get(`https://swapi.dev/api/planets/`)
+            .then(retorno => {
+                console.log(retorno)
+                setPlanets(retorno.data.results)
+                setMsg("")
+            }).catch(() => setMsg("Erro ao buscar dados!"))
+    }
+
+    useLayoutEffect(() => {
+
+        getPlanets()
+
+
+    }, [])
 
     return (
         <>
-            <Banner titulo="Planetas" mensagem="Conheça aqui toda a galaxia Star Wars" />
-            <section id="three" className="wrapper special">
-                <div className="inner">
-                    <header className="align-center">
-                        <h2>Trilogia</h2>
-                        <p>Veja aqui todos os filmes Star Wars.</p>
-                    </header>
-                    <div className="flex flex-2">
-                        <article>
-                            <div className="image fit">
-                                <img src={require('../images/pic01.jpg')} alt="Pic 01" />
-                            </div>
-                            <header>
-                                <h3>Praesent placerat magna</h3>
-                            </header>
-                            <p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor lorem ipsum.</p>
-                            <footer>
-                                <Link to="/" className="button special">More</Link>
-                            </footer>
-                        </article>
-                        <article>
-                            <div className="image fit">
-                                <img src={require('../images/pic02.jpg')} alt="Pic 02" />
-                            </div>
-                            <header>
-                                <h3>Fusce pellentesque tempus</h3>
-                            </header>
-                            <p>Sed adipiscing ornare risus. Morbi est est, blandit sit amet, sagittis vel, euismod vel, velit. Pellentesque egestas sem. Suspendisse commodo ullamcorper magna non comodo sodales tempus.</p>
-                            <footer>
-                                <Link to="/" className="button special">More</Link>
-                            </footer>
-                        </article>
+        <Banner titulo="Planetas" mensagem="Explore aqui todos os planetas do universo STAR WARS" />
+        <section id="three" className="wrapper special">
+            <div className="corpoPagina">
+                {msg}
+                {planets.map((item, chave) =>
+                    <div key={chave}>
+                            
+                <h3>Nome: </h3><h2>{item.name}</h2> <h1>Periodo de rotação: </h1><strong>{item.rotation_period}</strong><br/> <br/><h1>Periodo orbital: </h1>{item.orbital_period} <br/><br/> <h1>Diametro: </h1> {item.diameter}<br/><br/> <h1>Clima: </h1> {item.climate}<br/><br/> <h1>Gravidade: </h1> {item.gravity} <h1>Terra: </h1> {item.terrain}<br/><br/> <h1>Água da superfície: </h1> {item.surface_wate}<br/><br/> <h1>População: </h1> {item.population}
+                        
+                        <hr />
                     </div>
-                </div>
-            </section>
-
+                    )
+                
+                    }
+            </div >
+        </section>
+        
         </>
     )
 }
+
+            
